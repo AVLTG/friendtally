@@ -4,12 +4,12 @@ friendtally (formerly tabletally) is an MTG collection checker for friend groups
 
 **Domains (2026-10-25 rename):**
 
-- **Canonical:** `https://ftabletally.avltg.dev` — also the value of `APP_URL` (invite-link origin)
-- **Legacy:** `https://tabletally.avltg.dev` — serves the same app until the public TableTally platform launches and takes the name over
+- **Production (the only domain):** `https://tabletally.avltg.dev` — if `APP_URL` is set, this is its value
 - **Staging (unchanged):** `https://magic-scraper-git-develop-avltgs-projects.vercel.app`
-- DNS is on Cloudflare; `avltg.dev` has a proxied wildcard `*.avltg.dev`, so any subdomain used by this app needs its own **DNS-only (grey-cloud)** record — see [Vercel Project Setup](#vercel-project-setup)
+- DNS is on Cloudflare; `avltg.dev` has a proxied wildcard `*.avltg.dev`, so any subdomain ever used by this app needs its own **DNS-only (grey-cloud)** record — see [Vercel Project Setup](#vercel-project-setup)
 - The Turso databases keep their original names (`tabletally`, `tabletally-dev`) — **do not rename them**
 - GitHub repo: `AVLTG/friendtally` (renamed from `AVLTG/tabletally`; the old URL redirects)
+- The TableTally brand is moving to a separate public platform at `tabletally.ca` — that platform has its own repo and infrastructure; nothing there shares this app's domains, Vercel project, or databases
 
 ---
 
@@ -122,10 +122,10 @@ Turso free tier includes 500 databases, 9 GB storage, and 1 billion row reads pe
 4. Before the first deploy, add all environment variables (see next section)
 5. Click **Deploy**
 
-**Adding a custom domain (e.g. `ftabletally.avltg.dev`):** `avltg.dev` DNS is hosted on Cloudflare with a **proxied wildcard `*.avltg.dev`** — an unconfigured subdomain answers from Cloudflare with a 525 error, not from Vercel. To attach a subdomain to this project:
+**Adding a custom subdomain of avltg.dev (if ever needed):** `avltg.dev` DNS is hosted on Cloudflare with a **proxied wildcard `*.avltg.dev`** — an unconfigured subdomain answers from Cloudflare with a 525 error, not from Vercel. To attach a subdomain to this project:
 
-1. Vercel Dashboard > Project > Settings > Domains > add `ftabletally.avltg.dev`
-2. Cloudflare Dashboard > DNS: create a record `ftabletally` → CNAME → `cname.vercel-dns.com`, **DNS only (grey cloud)** — a proxied (orange) record breaks Vercel's certificate issuance
+1. Vercel Dashboard > Project > Settings > Domains > add the subdomain
+2. Cloudflare Dashboard > DNS: create a record for the subdomain → CNAME → `cname.vercel-dns.com`, **DNS only (grey cloud)** — a proxied (orange) record breaks Vercel's certificate issuance
 3. Wait for Vercel to show the domain as valid (certificate provisioning can take a few minutes)
 
 ---
@@ -143,7 +143,7 @@ Apply them to **Production** at minimum. Optionally also set them for Preview an
 | `COOKIE_SECRET` | HMAC key for session cookies — must be 32+ bytes | `openssl rand -hex 32` | `a1b2c3d4...` (64 hex chars) |
 | `ADMIN_PASSWORD` | Legacy bootstrap password — only works while `ALLOW_LEGACY_LOGIN=true` (see User accounts migration below) | Choose a strong string | `admin-strong-pass-xyz` |
 | `ALLOW_LEGACY_LOGIN` | Enables the legacy admin-password login during the user-accounts migration window | `true` / unset | `true` |
-| `APP_URL` | Canonical site origin used in generated invite links (falls back to the request origin) | Your production URL | `https://ftabletally.avltg.dev` |
+| `APP_URL` | Canonical site origin used in generated invite links (falls back to the request origin) | Your production URL | `https://tabletally.avltg.dev` |
 | `CRON_SECRET` | Bearer token Vercel sends with cron requests — must match server check | `openssl rand -hex 32` | `f9e8d7c6...` (64 hex chars) |
 | `CHROMIUM_REMOTE_EXEC_PATH` | URL to the chromium-min binary tarball used for browser scraping | Copy from releases page | `https://github.com/Sparticuz/chromium/releases/download/v143.0.4/chromium-v143.0.4-pack.x64.tar` |
 | `SCRAPER_API_KEY` | **Optional, legacy.** Last-resort proxy for Moxfield API calls — only used when both curl and the bundled Chromium browser fail. Unset it to go direct (the default path); Cloudflare blocks Node's fetch by TLS fingerprint, so direct fetches go curl → Chromium instead. | ScraperAPI dashboard | *(unset — recommended)* |

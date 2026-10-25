@@ -1,6 +1,6 @@
 # FriendTally
 
-> **Renamed 2026-10-25** — formerly **TableTally**. The `tabletally` name now belongs to the upcoming public MTG trading platform; this private friend-group app is **FriendTally**, live at **https://ftabletally.avltg.dev** (canonical) and https://tabletally.avltg.dev (legacy until the platform launches). The Raspberry Pi / PM2 deployment sections below are legacy — see `DEPLOYMENT.md` for the real Vercel + Turso setup.
+> **Renamed 2026-10-25** — formerly **TableTally**, now **FriendTally**. Same app, same data, same URL: **https://tabletally.avltg.dev**. The `TableTally` name now belongs to an upcoming separate public MTG trading platform (launching at tabletally.ca); this private friend-group app and its repo (`AVLTG/friendtally`) are unrelated to it. The Raspberry Pi / PM2 deployment sections below are legacy — see `DEPLOYMENT.md` for the real Vercel + Turso setup.
 
 A web application that allows you to check which cards from your Magic: The Gathering decklist are available in your friends' collections. The app scrapes Moxfield collections and provides an easy-to-use interface for deck checking.
 

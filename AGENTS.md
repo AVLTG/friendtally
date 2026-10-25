@@ -2,7 +2,7 @@
 
 MTG web app for a private friend group: check who owns cards from a pasted decklist (scraped Moxfield collections), search local game-store inventory (Puppeteer/fetch scrapers), track game history with stats dashboards, and manage decks + a shared card library.
 
-Next.js 16 App Router + React 19 + TypeScript strict + Tailwind v4. Prisma 6 with the libsql driver adapter → Turso (SQLite) in prod. Deployed on Vercel with a cron sync (`vercel.json`, every other night), live at **https://ftabletally.avltg.dev** (canonical) and **https://tabletally.avltg.dev** (legacy until the public TableTally platform launches — both serve this app until then). Formerly named TableTally; GitHub repo is `AVLTG/friendtally`. **Read `DEPLOYMENT.md` before touching deployment, env vars, or migrations** — the README's RPi/PM2 setup and root `update.sh` are legacy.
+Next.js 16 App Router + React 19 + TypeScript strict + Tailwind v4. Prisma 6 with the libsql driver adapter → Turso (SQLite) in prod. Deployed on Vercel with a cron sync (`vercel.json`, every other night), live at **https://tabletally.avltg.dev**. Formerly named TableTally (renamed 2026-10-25) — the `TableTally` brand is moving to a separate public platform at tabletally.ca; this app, its domain, and its GitHub repo (`AVLTG/friendtally`) are unrelated to that platform. **Read `DEPLOYMENT.md` before touching deployment, env vars, or migrations** — the README's RPi/PM2 setup and root `update.sh` are legacy.
 
 ## Commands
 
@@ -56,7 +56,7 @@ Conventional commits (`fix(scope):`, `feat(scope):`, `chore:` …). Work on `fix
 
 ## Live site (production)
 
-Prod (https://ftabletally.avltg.dev, legacy mirror https://tabletally.avltg.dev) holds **real friend data** (~22 users, ~90 decks, 3k+ library cards). To inspect it, log in as `amirali` (ADMIN; lands on `/admin`) — the password is in the local gitignored `.env` as `WEBSITE_PASSWORD_AMIRALI`. Read it programmatically (e.g. parse `.env` in a script and fill the form), never print or commit it. Browse read-only: never click Sync / Delete / "Update All Collections" in the prod admin or submit any mutating form unless explicitly asked. Everything except `/login` sits behind the session cookie enforced by `src/proxy.ts`.
+Prod at https://tabletally.avltg.dev holds **real friend data** (~22 users, ~90 decks, 3k+ library cards). To inspect it, log in as `amirali` (ADMIN; lands on `/admin`) — the password is in the local gitignored `.env` as `WEBSITE_PASSWORD_AMIRALI`. Read it programmatically (e.g. parse `.env` in a script and fill the form), never print or commit it. Browse read-only: never click Sync / Delete / "Update All Collections" in the prod admin or submit any mutating form unless explicitly asked. Everything except `/login` sits behind the session cookie enforced by `src/proxy.ts`.
 
 ## Never commit
 
