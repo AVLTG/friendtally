@@ -1,8 +1,8 @@
-# TableTally
+# FriendTally
 
 MTG web app for a private friend group: check who owns cards from a pasted decklist (scraped Moxfield collections), search local game-store inventory (Puppeteer/fetch scrapers), track game history with stats dashboards, and manage decks + a shared card library.
 
-Next.js 16 App Router + React 19 + TypeScript strict + Tailwind v4. Prisma 6 with the libsql driver adapter → Turso (SQLite) in prod. Deployed on Vercel with a cron sync (`vercel.json`, every other night), live at **https://tabletally.avltg.dev**. **Read `DEPLOYMENT.md` before touching deployment, env vars, or migrations** — the README's RPi/PM2 setup and root `update.sh` are legacy.
+Next.js 16 App Router + React 19 + TypeScript strict + Tailwind v4. Prisma 6 with the libsql driver adapter → Turso (SQLite) in prod. Deployed on Vercel with a cron sync (`vercel.json`, every other night), live at **https://tabletally.avltg.dev**. Formerly named TableTally (renamed 2026-10-25) — the `TableTally` brand is moving to a separate public platform at tabletally.ca; this app, its domain, and its GitHub repo (`AVLTG/friendtally`) are unrelated to that platform. **Read `DEPLOYMENT.md` before touching deployment, env vars, or migrations** — the README's RPi/PM2 setup and root `update.sh` are legacy.
 
 ## Commands
 
