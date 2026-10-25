@@ -1,4 +1,6 @@
-# TableTally
+# FriendTally
+
+> **Renamed 2026-10-25** — formerly **TableTally**. The `tabletally` name now belongs to the upcoming public MTG trading platform; this private friend-group app is **FriendTally**, live at **https://ftabletally.avltg.dev** (canonical) and https://tabletally.avltg.dev (legacy until the platform launches). The Raspberry Pi / PM2 deployment sections below are legacy — see `DEPLOYMENT.md` for the real Vercel + Turso setup.
 
 A web application that allows you to check which cards from your Magic: The Gathering decklist are available in your friends' collections. The app scrapes Moxfield collections and provides an easy-to-use interface for deck checking.
 
@@ -29,8 +31,8 @@ A web application that allows you to check which cards from your Magic: The Gath
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/AVLTG/tabletally.git
-cd tabletally
+git clone https://github.com/AVLTG/friendtally.git
+cd friendtally
 ```
 
 ### 2. Install Dependencies
@@ -184,8 +186,8 @@ npm -v
 
 ```bash
 cd ~
-git clone https://github.com/AVLTG/tabletally.git
-cd tabletally
+git clone https://github.com/AVLTG/friendtally.git
+cd friendtally
 
 # Install dependencies
 npm install
